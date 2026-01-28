@@ -1,0 +1,8 @@
+* Fazer um algoritmo de média para faculdade *
+
+Média = (nota1 + nota2 + nota3) / 3;
+
+Classificação
+- Média menor que 5, reprovação
+- Média entre 5 e 7, recuperação
+- Média acima de 7, passou de semestre
