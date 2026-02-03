@@ -18,40 +18,24 @@
 
 const {gets, print} = require('./auxiliar');
 
-let numPares = [];
-let numImpars = [];
+let maiorPar = null;
+let menorImpar = null;
 
-// Função calcular par/ímpar
+// Função calcular par/ímpar e conferir se o maior número par e o menor número ímpar!
 function parOuImpar(num){
     if((num % 2) === 0){
-        numPares.push(num);
+        const condicao = num > maiorPar || maiorPar === null;
+
+        if(condicao){
+            maiorPar = num;
+        }
     } else{
-        numImpars.push(num);
+        const condicao = num < menorImpar || menorImpar === null;
+
+        if(condicao){
+            menorImpar = num;
+        }
     }
-}
-
-// Funções de maior número e menor número
-function maiorNumeroPar(numeros){
-    let maior = 0;
-
-    numeros.forEach(n => {
-        if(maior < n){
-            maior = n;
-        }
-    });
-
-    return maior;
-}
-function menorNumeroImpar(numeros){
-    let menor = 0;
-
-    numeros.forEach(n => {
-        if(menor === 0 || menor > n){
-            menor = n;
-        }
-    });
-
-    return menor;
 }
 
 const tamanhoNumeros = gets();
@@ -60,5 +44,7 @@ for(let i = 0; i < tamanhoNumeros; i++){
     parOuImpar(gets());
 }
 
-print(`Maior número par: ${maiorNumeroPar(numPares)}`);
-print(`Menor número impar: ${menorNumeroImpar(numImpars)}`);
+print("-------------------------------------------");
+
+print(`Maior número par: ${maiorPar}`);
+print(`Menor número impar: ${menorImpar}`);
