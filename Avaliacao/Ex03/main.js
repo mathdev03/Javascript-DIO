@@ -22,29 +22,32 @@
 
 const {gets, print} = require('./auxiliar');
 
+// Váriaveis inciais!
+const salario = gets();
+const beneficio = gets();
 
-const percentual = (valor, porcento) => {
+
+// Funções para calcular uma porcentagem %
+const calcularPorcentagem = (valor, porcento) => {
     return valor * (porcento / 100);
 };
 
-function pegarSalarioPercentualImposto(salario){
+// Conta de aliquota!
+function pegarAliquota(salario){
 
     if(salario <= 1100){
-        return percentual(salario, 5);
+        return 5;
     } else if(salario >= 1100.01 && salario <= 2500){
-        return percentual(salario, 10);
+        return 10;
     } else{
-        return percentual(salario, 15);
+        return 15;
     }
 }
 
-const salario = gets();
-const imposto = pegarSalarioPercentualImposto(salario);
-const beneficio = gets();
+const valorAliquota = pegarAliquota(salario);
+const valorImposto = calcularPorcentagem(salario, valorAliquota);
 
-const salarioFinal = (salario - imposto) + beneficio;
+
+const salarioFinal = salario - valorImposto + beneficio;
 
 print(salarioFinal);
-
-
-// Terminar amanhã 02/02/2026 - Resolução Guiada - valorTransferir. Tempo: 02:45
